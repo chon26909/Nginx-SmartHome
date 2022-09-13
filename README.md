@@ -1,6 +1,6 @@
 # Nginx Gateway
 
-## MQTT Broker
+### MQTT Broker
 
         server   {
                         listen 80;
