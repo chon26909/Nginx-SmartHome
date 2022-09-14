@@ -1,6 +1,6 @@
 # Nginx Gateway
 
-### MQTT Broker
+#### MQTT Broker
 
         server  {
                 
@@ -17,4 +17,19 @@
                 }
         }
 
-#
+#### Smarthome GUI
+
+        server  {
+                listen 80;
+                server_name smarthome.chon.host;
+
+                location / {
+                        root /var/www/smarthome;
+                        index index.html;
+                        proxy_http_version 1.1;
+                        proxy_set_header Upgrade $http_upgrade;
+                        proxy_set_header Connection 'upgrade';
+                        proxy_set_header Host $host;
+                        proxy_cache_bypass $http_upgrade;
+                }
+        }
